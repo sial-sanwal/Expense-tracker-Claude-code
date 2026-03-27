@@ -133,17 +133,28 @@ a { color: inherit; text-decoration: none; }
     margin: 0 auto;
 }
 
+.hero-text-center {
+    text-align: center;
+}
+
 .hero-badge {
-    display: inline-block;
-    background: var(--accent-light);
-    color: var(--accent);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.35rem 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: var(--paper);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
     border-radius: 999px;
     margin-bottom: 1.5rem;
+}
+
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--paper);
+    border-radius: 50%;
 }
 
 .hero-title {
@@ -155,7 +166,7 @@ a { color: inherit; text-decoration: none; }
     margin-bottom: 1.25rem;
 }
 
-.hero-title em {
+.hero-title-accent {
     font-style: italic;
     color: var(--accent);
 }
@@ -168,10 +179,161 @@ a { color: inherit; text-decoration: none; }
     margin-bottom: 2rem;
 }
 
+.hero-subtitle-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .hero-actions {
     display: flex;
     gap: 1rem;
     align-items: center;
+}
+
+.hero-actions-center {
+    justify-content: center;
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero Buttons                                                        */
+/* ------------------------------------------------------------------ */
+
+.btn-hero {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s;
+    text-decoration: none;
+}
+
+.btn-hero:hover {
+    background: var(--accent);
+}
+
+.btn-hero-outline {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.btn-hero-outline:hover {
+    background: var(--accent);
+}
+
+/* ------------------------------------------------------------------ */
+/* App Preview                                                         */
+/* ------------------------------------------------------------------ */
+
+.app-preview {
+    background: var(--paper-warm);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+}
+
+.app-preview-header {
+    background: var(--border-soft);
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.traffic-lights {
+    display: flex;
+    gap: 8px;
+}
+
+.traffic-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.traffic-red { background: #ff5f57; }
+.traffic-yellow { background: #febc2e; }
+.traffic-green { background: #28c840; }
+
+.app-preview-content {
+    padding: 1.5rem;
+}
+
+.stat-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat-card {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--ink);
+}
+
+.preview-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.preview-bar-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 60px;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.preview-cat {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+}
+
+.preview-bar-track {
+    height: 6px;
+    background: var(--border-soft);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.preview-bar {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 999px;
+}
+
+.preview-bar-2 { background: var(--accent-2); }
+.preview-bar-3 { background: #5b7fa6; }
+
+.preview-amt {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+    text-align: right;
 }
 
 /* ------------------------------------------------------------------ */
@@ -323,6 +485,7 @@ a { color: inherit; text-decoration: none; }
 
 .feature-icon {
     font-size: 1.5rem;
+    font-family: var(--font-display);
     color: var(--accent);
     margin-bottom: 1rem;
     font-weight: 700;
@@ -565,6 +728,140 @@ a { color: inherit; text-decoration: none; }
 
 .footer-links a:hover {
     color: var(--paper);
+}
+
+/* ------------------------------------------------------------------ */
+/* Video Modal                                                         */
+/* ------------------------------------------------------------------ */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.modal-overlay.modal-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-container {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    background: var(--ink);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--paper);
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    opacity: 1;
+}
+
+.modal-video {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.modal-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ------------------------------------------------------------------ */
+/* Video Modal                                                         */
+/* ------------------------------------------------------------------ */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.modal-overlay.modal-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-container {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    background: var(--ink);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--paper);
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    opacity: 1;
+}
+
+.modal-video {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.modal-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /* ------------------------------------------------------------------ */
